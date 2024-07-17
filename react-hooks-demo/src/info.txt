@@ -1,0 +1,11 @@
+Q. nodejs를 설치하는 이유?
+    - create-react-app 라이브러리를 사용하기 위해서 설치한다.
+    - nodejs를 설치하면 npm이라는 tool을 이용할 수 있다.
+
+파일 구조
+public
+    - static 파일 보관함
+src 
+    - 소스 코드 보관함
+package.json 
+    - 설치한 라이브러리 목록
