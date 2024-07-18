@@ -1,0 +1,16 @@
+#2 Express.js 프레임워크 추가
+    - 터미널에서 npm install express --save 명령어를 입력하여 express js를 추가한다.
+
+#3 mongoose 추가 및 MongoDB 연결
+    - 터미널에서 npm install mongoose --save 명령어를 입력하여 mongoose를 추가한다.
+
+* 2-3 package.json의 dependencies
+
+"dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.5.1"
+}
+
+#4 MongoDB의 Model & Schema
+    - Model : Schema를 감싸주는 역할
+    - Schema : 데이터의 구조와 내용, 기본값 등을 정의하는 JSON 객체
