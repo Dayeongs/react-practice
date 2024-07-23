@@ -33,10 +33,10 @@
     - 터미널에서 npm install bcrypt --save 명령어를 입력하여 Bcrypt를 설치한다.
 
 #12 토큰 생성 및 저장 (jsonwebtoken & cookie-parser)
-    토큰 생성 - jsonwebtoken
-    - 터미널에서 npm install jsonwebtoken --save 명령어를 입력하여 설치한다.
-    쿠키에 토큰 저장 - cookie-parser
-    - 터미널에서 npm install cookie-parser --save 명령어를 입력하여 설치한다.
+    토큰 생성 (jsonwebtoken)
+        - 터미널에서 npm install jsonwebtoken --save 명령어를 입력하여 설치한다.
+    쿠키에 토큰 저장 (cookie-parser)
+        - 터미널에서 npm install cookie-parser --save 명령어를 입력하여 설치한다.
 
     * Mongoose 5.0부터는 콜백함수를 지원하지 않기 때문에 callback을 쓰지 않고 promise 또는 async/await로 수정해서 사용해야한다. <중요!!! 모든 에러는 여기서 시작...>
 
@@ -45,3 +45,149 @@
     2. npx create-react-app .을 입력하여 React를 설치한다. 
        ('.'을 적으면 해당 폴더에 / 폴더명을 적으면 폴더가 생성되고 생성된 폴더에 React가 설치됨)
 
+#19 'rfce' 키워드로 기본 함수형 컴포넌트 코드 자동 완성
+    - EXTENSIONS에서 'ES7 React/Redux/GraphQL/React-Native snippets'을 검색하여 다운받는다.
+
+#20 React Router Dom
+    - 터미널에서 npm install react-router-dom --save 명령어를 입력하여 설치한다.
+
+    발생한 에러
+        1. 'Switch' is not exported from 'react-router-dom' 에러
+        2. '... is not a <Route> component. All component children of <Routes> must be a <Route> or <React.Fragment>' 에러
+    
+    해결
+    - react-router-dom 버전6 바뀐점
+        1. Switch 대신 Routes를 사용한다.
+        2. Route 안에 component 대신 element 사용한다.
+
+#21 Axios
+    - 터미널에서 npm install axios --save 명령어를 입력하여 설치한다.
+
+#22 CORS
+    - 터미널에서 npm install http-proxy-middleware --save 명령어를 입력하여 설치한다.
+
+    Proxy 설정
+        1. setupProxy.js 파일을 생성하여 proxy를 설정한다.
+        2. package.json 파일에 proxy 설정을 추가한다.
+
+        * 1번 방법으로 proxy 설정이 되지 않아 2번 방법으로 해결
+
+#23 Proxy Server
+    - Proxy Server 사용하는 이유
+        1. 방화벽 기능
+        2. 웹 필터 기능
+        3. 캐쉬 데이터, 공유 데이터 기능 제공
+
+#24 Concurrently
+    - 여러 개의 명령어를 동시에 실행할 수 있도록 해주는 Tool이다.
+    - Concurrently를 이용해서 프론트와 백 서버를 한번에 실행시킬수 있다.
+
+    Concurrently 사용방법
+        1. 터미널
+            - 경로 : boiler-plate
+            - 명령어 : npm install concurrently --save
+        2. 루트 디렉토리에 있는 package.json 파일의 scripts에 concurrently 설정을 추가한다.
+            - "dev": "concurrently \"서버 경로\" \"클라이언트 경로\""
+        3. npm run dev 명령어를 입력하면 프론트와 백 서버가 한번에 실행된다.
+
+#25 Antd CSS Framwork
+    - CSS FRAMEWORK 종류 for React JS
+        1. Material UI (배울 때 어렵움)
+        2. React Bootstrap
+        3. Semantic UI
+        4. Ant Design (용량이 크지만, 스타일이 깔끔하고 쓰기가 편함)
+        5. Materialize 등등
+
+    Ant Design 사용방법
+        1. 터미널
+            - 경로 : boiler-plate\client
+            - 명령어 : npm install antd --save
+        2. client 폴더의 index.js 파일에 import를 추가한다.
+            - import 'antd/dist/antd.css';
+
+    * 에러 발생
+        - Can't resolve 'antd/dist/antd.css' in 'D:\react-practice\boiler-plate\client\src'
+        - antd가 5버전으로 올라가면서 css를 import하지 않아도 된다.
+        - 4버전대 다운그레이드 명령어 : npm install antd@^4.24.0
+
+#26 Redux
+    - 상태 관리 라이브러리이다.
+
+    Redux 사용방법 (Setting)
+    
+        * 다운받아야 할 Dependency들
+            1. redux
+            2. react-redux
+            3. redux-promise
+            4. redux-thunk
+
+        1. 터미널
+            - 경로 : boiler-plate\client
+            - 명령어 : npm install redux react-redux redux-promise redux-thunk --save
+        2. client 폴더의 index.js 파일에 import를 추가한다.
+            - import { Provider } from 'react-redux';
+
+    * 에러 발생
+        - export 'ReduxThunk' (imported as 'ReduxThunk') was not found in 'redux-thunk' (possible exports: thunk, withExtraArgument)
+        - import 코드를 아래와 같이 수정한다.
+            - import {thunk} from "redux-thunk";
+
+#28 React Hooks
+    - Hooks이 생기면서 함수형 컴포넌트에서 사용하지 못했던 기능들을 사용할 수 있게 되었다.
+
+    React Component
+        - Class Component
+            - 더 많은 기능을 사용할 수 있다.
+            - 코드가 복잡하고 길다.
+            - 성능적인면에서 느리다.
+        ----------------------------------------------------    
+            import React, { Component } from 'react'
+
+            export default class Hello extends Component {
+                render() {
+                    return (
+                        <div>
+                            hello
+                        </div>
+                    )
+                }
+            }
+        ----------------------------------------------------    
+       
+        - Functional Component
+            - 제공하는 기능이 한정되어 있다.
+            - 코드가 간단하고 짧다.
+            - 성능적인면에서 빠르다.
+        ----------------------------------------------------    
+            import React from 'react'
+
+            export default function Hello() {
+                return (
+                    <div>
+                        hello
+                    </div>
+                )
+            }
+        ----------------------------------------------------
+
+#29-30 로그인 페이지
+    * 에러 발생
+        - Cannot read properties of undefined (reading 'push')
+        - 실제 코드 : props.history.push('/)
+        - react-router가 업데이트 되면서 useNavigate로 변경됨
+        ----------------------------------------------------    
+            // This is a React Router v6 app
+            import { useNavigate } from "react-router-dom"; -> 1번
+
+            function App() {
+                let navigate = useNavigate();               -> 2번
+                function handleClick() {
+                    navigate("/home");                      -> 3번
+                }
+                return (
+                    <div>
+                        <button onClick={handleClick}>go home</button>
+                    </div>
+                );
+            }
+        ----------------------------------------------------

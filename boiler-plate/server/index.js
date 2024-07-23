@@ -3,12 +3,11 @@ const express = require('express');
 // const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const app = express();
-const port = 5000
 
-const config = require('./server/config/key');
+const config = require('./config/key');
 
-const { auth } = require('./server/middleware/auth');
-const { User } = require('./server/models/User');
+const { auth } = require('./middleware/auth');
+const { User } = require('./models/User');
 
 const mongoose = require('mongoose')
 // MongoParseError: option usefindandmodify is not supported 에러 발생
@@ -24,7 +23,11 @@ app.use(express.urlencoded({ extended: true })); // application/x-www-form-urlen
 app.use(express.json()); // application/json, JSON 형식의 데이터 파싱
 app.use(cookieParser());
 
-app.get('/', (req, res) => res.send('Hello World! 안녕하세용 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ'));
+app.get('/', (req, res) => res.send('Hello World!'));
+
+app.get('/api/hello', (req, res) => {
+    res.send('왜 setupProxy.js 파일로는 proxy 설정이 안될까..?');
+});
 
 app.post('/api/users/register', async (req, res) => {
     try {
@@ -101,4 +104,5 @@ app.get('/api/users/logout', auth, async (req, res) => {
 //         .catch((err) => { return res.json({ success: false, err }) })
 // })
 
+const port = 5000
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
