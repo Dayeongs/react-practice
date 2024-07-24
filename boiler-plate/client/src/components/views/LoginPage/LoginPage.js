@@ -3,6 +3,8 @@ import Axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../_actions/user_action';
 import { useNavigate } from "react-router-dom";
+import { Input } from "antd";
+import Auth from '../../../hoc/auth';
 
 function LoginPage(props) {
 
@@ -31,7 +33,6 @@ function LoginPage(props) {
     dispatch(loginUser(body))
       .then(response => {
         if(response.payload.loginSuccess) {
-          // props.history.push('/)
           navigate('/');
         } else {
           alert('Error')
@@ -44,9 +45,9 @@ function LoginPage(props) {
 
       <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={onSubmitHandler}>
         <label>Email</label>
-        <input type='email' value={Email} onChange={onEmailHandler} />
+        <Input type='email' value={Email} onChange={onEmailHandler} />
         <label>Password</label>
-        <input type='password' value={Password} onChange={onPasswordHandler} />
+        <Input type='password' value={Password} onChange={onPasswordHandler} />
         <br />
         <button type="submit">
           Login
@@ -57,4 +58,4 @@ function LoginPage(props) {
   )
 }
 
-export default LoginPage
+export default Auth(LoginPage, false);
